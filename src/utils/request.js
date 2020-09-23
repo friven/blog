@@ -28,8 +28,8 @@ instance.interceptors.response.use(
       if (response) {
           // 请求已发出，但是不在2xx的范围 
           // errorHandle(response.status, response.data.message);
-          localStorage.removeItem("token")
-          localStorage.removeItem("userName")
+          // localStorage.removeItem("token")
+          // localStorage.removeItem("userName")
           return Promise.reject(response);
       } else {
           // 处理断网的情况

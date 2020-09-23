@@ -112,8 +112,9 @@
           >{{$t("write")}}</el-button>
         </div>
       </el-header>
+      <el-divider></el-divider>
     </el-container>
-    <el-divider></el-divider>
+    
     <router-view />
   </div>
 </template>
@@ -205,6 +206,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+
 .popul{
   /deep/ .el-input__inner{   /*或者 .s2>>>.el-input__inner  */
         border-radius: 100px;    /*输入框圆角值*/
@@ -229,7 +231,17 @@ export default {
       }
 }
   
-
+.el-container{
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 70px;
+  background: #fff;
+}
+.headTit{
+  margin-top: 70px;
+}
 
 
 .el-divider {
@@ -251,7 +263,7 @@ export default {
   text-align: center;
   line-height: 60px;
   display: flex;
-  justify-content: space-between;
+  // justify-content: space-between;
   .leftArea {
     width: 10%;
     height: 100%;
@@ -267,6 +279,7 @@ export default {
   .midArea{
     width: 60%;
     height: 100%;
+    margin-left: 5%;
     position: relative;
     .popTitle{
       position: absolute;

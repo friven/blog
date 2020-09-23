@@ -25,4 +25,4 @@ export default new Vuex.Store({
       localStorage.setItem("lang", lang);
     },
   },
-  });
+});
