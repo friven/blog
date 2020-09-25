@@ -1,6 +1,8 @@
 <template>
   <div id="app">
-    <router-view />
+    <keep-alive>
+      <router-view  v-if="isRouterAlive"/>
+    </keep-alive>
   </div>
 </template>
 
@@ -9,7 +11,28 @@
 export default {
   name: 'App',
   components: {
-  }
+  },
+  //向子孙组件注入依赖  常见的刷新本页面功能，不会有白屏
+  // provide：Object | () => Object
+  // inject：Array<string> | { [key: string]: string | Symbol | Object }
+  provide () {
+   return{
+     reload: this.reload
+   }
+ },
+ data () {
+   return {
+     isRouterAlive:true
+   }
+ },
+ methods: {
+   reload(){
+     this.isRouterAlive = false;
+     this.$nextTick(()=>{
+       this.isRouterAlive = true
+     })
+   }
+ }
 }
 </script>
 

@@ -31,4 +31,18 @@ instance.interceptors.response.use(
       }
   });
 
-export default instance;
+  function noDataPost(url, data = {}, config = {}) {
+    return instance
+      .post(url, data, config)
+      .then(response => {
+        return response
+      })
+      .catch(error => {
+        return error
+      })
+  }
+
+export{
+  noDataPost,
+  instance
+};

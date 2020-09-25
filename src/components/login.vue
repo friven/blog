@@ -214,8 +214,9 @@ export default {
             }
 
           this.$api.login(params).then(res1=>{
-            localStorage.setItem("token", res1.data.access_token);
-            this.$store.commit("set_token",res1.data.access_token)
+            console.log(res1,"1312312312312")
+            localStorage.setItem("token", res1.data.data.access_token);
+            this.$store.commit("set_token",res1.data.data.access_token)
             this.$api.getUserInfo().then((res) => {
               console.log(res);
               localStorage.setItem("userName", res.data.data.name);

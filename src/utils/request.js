@@ -62,9 +62,20 @@ instance.interceptors.response.use(
       })
   }
 
+  function dataPost(url, data = {}, config = {}) {
+    return instance
+      .post(url, data, config)
+      .then(response => {
+        return response
+      })
+      .catch(error => {
+        return error
+      })
+  }
+
 
   export {
     get,
     post,
-    instance,
+    dataPost
   }

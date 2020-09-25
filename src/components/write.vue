@@ -21,7 +21,8 @@ export default {
         $imgAdd(pos, $file){
             // 第一步.将图片上传到服务器.
            var formdata = new FormData();
-           formdata.append('image', $file);
+           formdata.append('file', $file);
+           console.log($file,formdata.get("file"))
         //    axios({
         //        url: 'server url',
         //        method: 'post',
@@ -36,7 +37,7 @@ export default {
         //        */
         //        this.$refs.editor.$img2Url(pos, url);
         //    })
-            this.$api.saveImage().then(res=>{
+            this.$api.saveImage(formdata).then(res=>{
                 console.log(res)
                 this.$refs.editor.$img2Url(pos, res);
                 // 缓存图片信息

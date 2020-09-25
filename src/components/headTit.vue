@@ -4,7 +4,7 @@
       <el-header>
         <div class="leftArea">
           <!-- <p class="logo">{{$t("logo")}}</p> -->
-          <el-image style="width: 100px; height: 60px" :src="logoImg" fit="contain"></el-image>
+          <el-image style="width: 100px; height: 60px;cursor:pointer" @click="logoClick" :src="logoImg" fit="contain"></el-image>
         </div>
 
         <div class="midArea">
@@ -101,7 +101,7 @@
 
           <div class="user">
             <div v-show="$store.state.userName==''?true:false">{{$t('login')}}</div>
-            <el-avatar v-show="$store.state.userName==''?false:true"  icon="el-icon-user-solid" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+            <el-avatar v-show="$store.state.userName==''?false:true" style="width:40px;height:40px"  icon="el-icon-user-solid" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
           </div>
 
           <el-button
@@ -122,6 +122,7 @@
 <script>
 export default {
   name: "headTit",
+  inject:["reload"],
   data() {
     return {
       lang: this.$store.state.lang,
@@ -151,6 +152,15 @@ export default {
     },
     msgClick(){
       this.currentTitle = 2
+    },
+    logoClick(){
+      // this.reload()
+      console.log(this.$router)
+      if(this.$router.history.current.path == "/index"){
+        this.reload()
+      }else{
+        this.$router.push("/index")
+      }
     },
     //下拉菜单匹配
     querySearch(queryString, cb) {
@@ -238,9 +248,10 @@ export default {
   width: 100%;
   height: 70px;
   background: #fff;
+  z-index: 999;
 }
 .headTit{
-  margin-top: 70px;
+  margin-top: 100px;
 }
 
 
@@ -356,17 +367,18 @@ export default {
     width: 20%;
     height: 100%;
     display: flex;
-    justify-content: space-around;
     align-items: center;
     .user{
       display: flex;
       justify-content: space-between;
       align-items: center;
+      margin-right: 20px;
     }
     .settingIcon {
       font-size: 20px;
       line-height: 60px;
       cursor: pointer;
+      margin-right: 20px;
     }
     .writeBtn {
       height: 70%;

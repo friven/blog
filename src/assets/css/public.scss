@@ -1,13 +1,17 @@
 $color:#eeeeee;
-body,html{
+body,html,p{
     margin: 0;
     padding: 0;
-    width: 100%;
-    height: 100%;
     outline: 0;
+}
+body,html{
+    width: 100%;
 }
 ul,li{
     margin: 0;
     padding: 0;
     list-style: none;
 }
+// body{
+//     background: #f9f9f9;
+// }
