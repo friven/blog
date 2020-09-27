@@ -1,5 +1,5 @@
 <template>
-  <div ref="index" class="index1">
+  <div class="index1">
     <div class="leftNbsp"></div>
     <div class="midBlogList">
       <div class="code" v-for="(item, ind) in list" :key="item.id">
@@ -33,14 +33,18 @@
             />
           </div>
         </div>
-        <el-divider v-if="ind == total - 1 ?false : true"></el-divider>
+        <el-divider v-if="ind >= total - 1 ? false : true"></el-divider>
       </div>
-      <div ref="load" v-if="loading">
-        <placeHolder></placeHolder>
+      <!-- 占位div，用于加载动画时优化体验 -->
+      <div v-if="list.length >= total - 1 ? false : true" class="zhanwei">
+        <div v-if="loading">
+          <placeHolder></placeHolder>
+        </div>
       </div>
       <!-- <p v-if="noMore"  class="hint">没有更多了</p>     -->
     </div>
     <div class="rightNbsp"></div>
+    
   </div>
 </template>
 
@@ -118,26 +122,13 @@ export default {
   watch: {
     bottom(bottom) {
       if (bottom) {
-
         if (this.list.length >= this.total) {
-            this.loading = false;
-            return;
+          this.loading = false;
+          return;
         }
         this.loading = true;
-
-          //待解决，加载时页面需要多滚动一个动画的高度
-         this.$nextTick(() => {
-          if(this.$refs.load){
-            let load = this.$refs["load"];
-            load.scrollTop = load.scrollHeight+1000  // 滚动到滚动高度位置，就是滚动到底部
-            }
-        })
-
         //节流方法，防止用户多次触发
-       
-
-        throttle(this.addData, 1500,this)();
-        
+        throttle(this.addData, 1500, this)();
       }
     },
   },
@@ -165,6 +156,7 @@ export default {
     .code {
       .listEvery {
         display: flex;
+        justify-content: space-between;
         .listdiv {
           margin-top: 13px;
 
@@ -175,6 +167,10 @@ export default {
             font-weight: 700;
             word-break: break-word; // 词语打断
             white-space: normal; // 正常样式
+          }
+          .title1:hover {
+            text-decoration: underline;
+            cursor: pointer;
           }
           .info {
             margin: 0 0 8px;
@@ -204,5 +200,9 @@ export default {
       }
     }
   }
+}
+.zhanwei {
+  width: 100%;
+  height: 150px;
 }
 </style>
