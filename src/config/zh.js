@@ -13,6 +13,21 @@ module.exports = {
       found:" 发现",
       focus:" 关注",
       message:" 消息",
-      search:"搜索"
+      search:"搜索",
+      tit:"文章标题",
+      label:"文章标签",
+      type:"文章类型",
+      release:"发布形式",
+
+      introduction:" 文章简介",
+      content:" 正文",
+      save:" 保存",
+      setname:"起个名字吧！",
+      newtag:"新标签",
+      public:"公开",
+      private:"私密",
+      original:"原创",
+      reprinted:"转载",
+      bgm:"选择一首背景音乐",
 }
    

@@ -6,7 +6,10 @@ export default new Vuex.Store({
   state: {
     token: localStorage.getItem("token"),
     userName: localStorage.getItem("userName"),
-    lang:localStorage.getItem("lang")
+    lang:localStorage.getItem("lang"),
+    userId: localStorage.getItem("userId"),
+    musicUrl:localStorage.getItem("musicUrl"),
+    isPlay:false
   },
   mutations: {
     set_token(state, token) {
@@ -24,5 +27,15 @@ export default new Vuex.Store({
       state.lang =  lang;
       localStorage.setItem("lang", lang);
     },
+    setUserId(state,userId){
+      state.userId = userId;
+    },
+    setMusic(state, musicUrl) {
+      state.musicUrl =  musicUrl;
+      localStorage.setItem("musicUrl", musicUrl);
+    },
+    setAudio(state,isPlay){
+      state.isPlay =  isPlay;
+    }
   },
 });

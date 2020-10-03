@@ -13,5 +13,20 @@ module.exports = {
     found:" Found",
     focus:" Focus",
     message:" Message",
-    search:"Search"
+    search:"Search",
+    tit:"Article title",
+    label:"Article label",
+    type:"Article type",
+    release:"Release form",
+
+    introduction:"The article brief introduction",
+    content:"article content",
+    save:" save",
+    setname:"Set something up!",
+    newtag:"New Tag",
+    public:"public",
+    private:"private",
+    original:"original",
+    reprinted:"reprinted",
+    bgm:"choose a bgm",
 }

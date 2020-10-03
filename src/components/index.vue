@@ -33,10 +33,10 @@
             />
           </div>
         </div>
-        <el-divider v-if="ind >= total - 1 ? false : true"></el-divider>
+        <el-divider v-if="ind >= total-1 ? false : true"></el-divider>
       </div>
       <!-- 占位div，用于加载动画时优化体验 -->
-      <div v-if="list.length >= total - 1 ? false : true" class="zhanwei">
+      <div v-if="list.length >= total ? false : true" class="zhanwei">
         <div v-if="loading">
           <placeHolder></placeHolder>
         </div>
@@ -44,7 +44,6 @@
       <!-- <p v-if="noMore"  class="hint">没有更多了</p>     -->
     </div>
     <div class="rightNbsp"></div>
-    
   </div>
 </template>
 
@@ -65,7 +64,7 @@ export default {
       // 当前条数
       pageSize: 5,
       // 当前页数
-      page: 0,
+      page: 2,
       bottom: false, //是否已经滚动到底部
     };
   },
@@ -80,7 +79,7 @@ export default {
         this.loading = false;
         return;
       }
-      this.page++;
+      this.page = this.list.length
       let params = {
         page: this.page,
         pageSize: 5,
@@ -100,7 +99,7 @@ export default {
   mounted() {
     let params = {
       page: 0,
-      pageSize: 5,
+      pageSize: 7,
     };
     this.$api.getBlogList(params).then((res) => {
       console.log(res);
@@ -121,6 +120,7 @@ export default {
   },
   watch: {
     bottom(bottom) {
+      console.log(this.list)
       if (bottom) {
         if (this.list.length >= this.total) {
           this.loading = false;
@@ -128,6 +128,7 @@ export default {
         }
         this.loading = true;
         //节流方法，防止用户多次触发
+        
         throttle(this.addData, 1500, this)();
       }
     },

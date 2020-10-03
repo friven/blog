@@ -50,7 +50,7 @@ instance.interceptors.response.use(
         return error
       })
   }
-
+//post请求，get传参
   function post(url, params = {}, config = {}) {
     return instance
       .post(url, qs.stringify(params), config)

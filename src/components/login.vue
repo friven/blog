@@ -220,8 +220,10 @@ export default {
             this.$api.getUserInfo().then((res) => {
               console.log(res);
               localStorage.setItem("userName", res.data.data.name);
+              localStorage.setItem("userId", res.data.data.id);
+              this.$store.commit("setUserInfo",res.data.data.name)
+              this.$store.commit("setUserId",res.data.data.id)
             });
-
             this.$router.replace("index");
             
           })

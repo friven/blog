@@ -5,9 +5,7 @@
  * @returns {function} 
 */
 
-export const throttle = (after, wait,that)=>{
-    
-    
+export const throttle = (after, wait)=>{
     var timer;
     var isScroll; //是否正在执行回调
     return function() {
@@ -21,3 +19,20 @@ export const throttle = (after, wait,that)=>{
         }, wait);
     }
 }
+
+/**
+ * 在富文本字符串中获取第一张图片的url
+ * @param {String}  str - 富文本字符串
+ * @returns {String} 图片路径
+*/
+export const getFirstImage = (str)=>{
+        var url = '';
+         str.replace(/<img [^>]*src=['"]([^'"]+)[^>]*>/,  (match, capture)=>{
+            url = capture;
+         });
+        return url
+}
+
+/**
+ * 性能问题，窗口缩放
+*/

@@ -34,13 +34,14 @@ const routes = [
         component: register,
         name:"register",
       },
+      {
+        path: '/write',
+        component: write,
+        name:"write",
+      },
     ]
   },
-  {
-    path: '/write',
-    component: write,
-    name:"write",
-  },
+  
 ]
 const router = new VueRouter({
   // 配置路由和组件之间的应用关系

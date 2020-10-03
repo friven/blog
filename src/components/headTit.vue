@@ -91,22 +91,26 @@
 
         <div class="rightArea">
           <!-- 设置 -->
-          <el-popover placement="bottom" width="100" trigger="click">
-            <el-radio-group @change="setLang" v-model="lang" size="medium">
-              <el-radio-button label="zh">中文</el-radio-button>
-              <el-radio-button label="en">En</el-radio-button>
-            </el-radio-group>
-            <i class="iconfont iconyuyan settingIcon" slot="reference"></i>
-          </el-popover>
+          <div class="settingIcon">
+              <el-popover placement="bottom" width="100" trigger="click">
+              <el-radio-group @change="setLang" v-model="lang" size="medium">
+                <el-radio-button label="zh">中文</el-radio-button>
+                <el-radio-button label="en">En</el-radio-button>
+              </el-radio-group>
+              <i class="iconfont iconyuyan" slot="reference"></i>
+            </el-popover>
+          </div>
 
           <div class="user">
-            <div v-show="$store.state.userName==''?true:false">{{$t('login')}}</div>
-            <el-avatar v-show="$store.state.userName==''?false:true" style="width:40px;height:40px"  icon="el-icon-user-solid" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+            <el-avatar v-if="$store.state.userName==undefined?false:true" style="width:40px;height:40px"  icon="el-icon-user-solid" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
+            <p class="username" v-if="$store.state.userName==undefined?false:true">{{$store.state.userName}}</p>
+            <div v-if="$store.state.userName==undefined?true:false" @click="$router.push('/login')">{{$t('login')}}</div>
           </div>
 
           <el-button
             type="primary"
             @click="toWrite"
+            v-if="$router.history.current.path!='/write'"
             round
             class="iconfont iconpiyue-yumaobi writeBtn"
           >{{$t("write")}}</el-button>
@@ -372,15 +376,25 @@ export default {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-right: 20px;
+      padding: 0 10px 0 10px;
+      .username{
+        margin-left: 10px;
+      }
+      cursor: pointer;
+    }
+    .user:hover{
+      background: #eee;
     }
     .settingIcon {
       font-size: 20px;
-      line-height: 60px;
       cursor: pointer;
-      margin-right: 20px;
+      padding: 0 20px 0 10px;
+      outline: none;
+      display: flex;
+      justify-content: center;
     }
     .writeBtn {
+      margin-left: 10px;
       height: 70%;
       background-color: #ea6f5a;
       border-color: #ea6f5a;
