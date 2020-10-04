@@ -200,25 +200,15 @@ export default {
       this.currentTitle = 1;
     },
     msgClick() {
-      console.log(this.$router);
       if (this.$router.history.current.path == "/music") {
         this.reload();
-        this.$nextTick(() => {
-          this.currentTitle = 2;
-          console.log(this.currentTitle);
-        });
       } else {
         this.$router.push("/music");
-        this.$nextTick(() => {
-          this.currentTitle = 2;
-          console.log(this.currentTitle);
-        });
       }
       //先刷新再改变下标，刷新时会重置下标为0
-      setTimeout(()=>{
-        this.currentTitle = 2;
-        console.log("time out")
-      },2000)
+      this.$nextTick(() => {
+            this.currentTitle = 2;
+      });
     },
     logoClick() {
       // this.reload()
