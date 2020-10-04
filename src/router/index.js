@@ -7,6 +7,7 @@ import register from '../components/register'
 import index from '../components/index'
 import headTit from '../components/headTit'
 import write from '../components/write'
+import music from '../components/music'
 // 1.通过Vue.use(插件), 安装插件
 Vue.use(VueRouter)
  
@@ -39,6 +40,11 @@ const routes = [
         component: write,
         name:"write",
       },
+      {
+        path: '/music',
+        component: music,
+        name:"music",
+      }
     ]
   },
   

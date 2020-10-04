@@ -50,16 +50,16 @@
 
           <el-form-item :label="$t('type')">
             <el-select v-model="artical.type" filterable>
-              <el-option :label="$t('original')" :value="1"></el-option>
-              <el-option :label="$t('reprinted')" :value="0"></el-option>
+              <el-option :label="$t('original')" :value="0"></el-option>
+              <el-option :label="$t('reprinted')" :value="1"></el-option>
             </el-select>
           </el-form-item>
 
           <el-form-item :label="$t('release')">
-            <el-radio v-model="artical.release" :label="0">{{
+            <el-radio v-model="artical.release" :label="1">{{
               $t("public")
             }}</el-radio>
-            <el-radio v-model="artical.release" :label="1">{{
+            <el-radio v-model="artical.release" :label="0">{{
               $t("private")
             }}</el-radio>
           </el-form-item>
@@ -133,8 +133,8 @@ export default {
         title: "", //标题
         content: "", //内容
         label: "", //标签
-        type: 1, //类型
-        release: 0, //发布形式
+        type: 0, //类型
+        release: 1, //发布形式
         htmlContent: "",
         mdContent: "",
         textContent: "",

@@ -4,95 +4,119 @@
       <el-header>
         <div class="leftArea">
           <!-- <p class="logo">{{$t("logo")}}</p> -->
-          <el-image style="width: 100px; height: 60px;cursor:pointer" @click="logoClick" :src="logoImg" fit="contain"></el-image>
+          <el-image
+            style="width: 100px; height: 60px; cursor: pointer"
+            @click="logoClick"
+            :src="logoImg"
+            fit="contain"
+          ></el-image>
         </div>
 
         <div class="midArea">
-            <ul class="mid_ul">
-              <li :class="currentTitle==0?'titSelect':'hoverEvent'" @click="findClick">
-                <i class="iconfont iconfaxian titleIcon"></i>
-                &nbsp;
-                <span class="titleTxt">{{$t("found")}}</span>
-              </li>
-              <li :class="currentTitle==1?'titSelect':'hoverEvent'" @click="focusClick">
-                <i class="iconfont iconshu titleIcon"></i>
-                &nbsp;
-                <span class="titleTxt">{{$t("focus")}}</span>
-              </li>
-              <li :class="currentTitle==2?'titSelect':'hoverEvent'" @click="msgClick">
-                <i class="iconfont iconxiaoxi21-copy titleIcon"></i>
-                &nbsp;
-                <span class="titleTxt">{{$t("message")}}</span>
-              </li>
-              <li>
-                  <el-autocomplete
-                      popper-class="complete1"
-                      v-model="state"
-                      :fetch-suggestions="querySearch"
-                      :placeholder="$t('search')"
-                      select-when-unmatched
-                      class="search"
-                      @select="handleSelect"
-                      :popper-append-to-body="false"
-                    >
-                      <i class="el-icon-search searchIcon" slot="suffix" @click="handleIconClick"></i>
-                      <template slot-scope="{ item }">
-                        <div class="name">{{ item.value }}</div>
-                      </template>
-                    </el-autocomplete>
-              </li>
-            </ul>
+          <ul class="mid_ul">
+            <li
+              :class="currentTitle == 0 ? 'titSelect' : 'hoverEvent'"
+              @click="findClick"
+            >
+              <i class="iconfont iconfaxian titleIcon"></i>
+              &nbsp;
+              <span class="titleTxt">{{ $t("found") }}</span>
+            </li>
+            <li
+              :class="currentTitle == 1 ? 'titSelect' : 'hoverEvent'"
+              @click="focusClick"
+            >
+              <i class="iconfont iconshu titleIcon"></i>
+              &nbsp;
+              <span class="titleTxt">{{ $t("focus") }}</span>
+            </li>
+            <li
+              :class="currentTitle == 2 ? 'titSelect' : 'hoverEvent'"
+              @click="msgClick"
+            >
+              <i class="iconfont iconiconfonterji titleIcon"></i>
+              &nbsp;
+              <span class="titleTxt">{{ $t("music") }}</span>
+            </li>
+            <li>
+              <el-autocomplete
+                popper-class="complete1"
+                v-model="state"
+                :fetch-suggestions="querySearch"
+                :placeholder="$t('search')"
+                select-when-unmatched
+                class="search"
+                @select="handleSelect"
+                :popper-append-to-body="false"
+              >
+                <i
+                  class="el-icon-search searchIcon"
+                  slot="suffix"
+                  @click="handleIconClick"
+                ></i>
+                <template slot-scope="{ item }">
+                  <div class="name">{{ item.value }}</div>
+                </template>
+              </el-autocomplete>
+            </li>
+          </ul>
 
-            <!-- 媒体查询小于665时显示下拉框 -->
-            <div class="popTitle">
-              <el-popover
-              placement="bottom"
-              width=100%
-              trigger="click">
-
+          <!-- 媒体查询小于665时显示下拉框 -->
+          <div class="popTitle">
+            <el-popover placement="bottom" width="100%" trigger="click">
               <ul class="popul">
-              <li :class="currentTitle==0?'titSelect':'hoverEvent'" @click="findClick">
-                <span class="titleTxt">{{$t("found")}}</span>
-              </li>
-              <li :class="currentTitle==1?'titSelect':'hoverEvent'" @click="focusClick">
-                <span class="titleTxt">{{$t("focus")}}</span>
-              </li>
-              <li :class="currentTitle==2?'titSelect':'hoverEvent'" @click="msgClick">
-                <span class="titleTxt">{{$t("message")}}</span>
-              </li>
-              <li>
+                <li
+                  :class="currentTitle == 0 ? 'titSelect' : 'hoverEvent'"
+                  @click="findClick"
+                >
+                  <span class="titleTxt">{{ $t("found") }}</span>
+                </li>
+                <li
+                  :class="currentTitle == 1 ? 'titSelect' : 'hoverEvent'"
+                  @click="focusClick"
+                >
+                  <span class="titleTxt">{{ $t("focus") }}</span>
+                </li>
+                <li
+                  :class="currentTitle == 2 ? 'titSelect' : 'hoverEvent'"
+                  @click="msgClick"
+                >
+                  <span class="titleTxt">{{ $t("music") }}</span>
+                </li>
+                <li>
                   <el-autocomplete
-                      popper-class="complete1"
-                      v-model="state"
-                      :fetch-suggestions="querySearch"
-                      :placeholder="$t('search')"
-                      select-when-unmatched
-                      class="search"
-                      @select="handleSelect"
-                      :popper-append-to-body="false"
-                    >
-                      <i class="el-icon-search searchIcon" slot="suffix" @click="handleIconClick"></i>
-                      <template slot-scope="{ item }">
-                        <div class="name">{{ item.value }}</div>
-                      </template>
-                    </el-autocomplete>
-              </li>
-            </ul>
+                    popper-class="complete1"
+                    v-model="state"
+                    :fetch-suggestions="querySearch"
+                    :placeholder="$t('search')"
+                    select-when-unmatched
+                    class="search"
+                    @select="handleSelect"
+                    :popper-append-to-body="false"
+                  >
+                    <i
+                      class="el-icon-search searchIcon"
+                      slot="suffix"
+                      @click="handleIconClick"
+                    ></i>
+                    <template slot-scope="{ item }">
+                      <div class="name">{{ item.value }}</div>
+                    </template>
+                  </el-autocomplete>
+                </li>
+              </ul>
 
               <el-button slot="reference">
                 <i class="iconfont iconyanzhengma titleIcon"></i>
               </el-button>
             </el-popover>
-            </div>
-
-          
+          </div>
         </div>
-
 
         <div class="rightArea">
           <!-- 设置 -->
           <div class="settingIcon">
-              <el-popover placement="bottom" width="100" trigger="click">
+            <el-popover placement="bottom" width="100" trigger="click">
               <el-radio-group @change="setLang" v-model="lang" size="medium">
                 <el-radio-button label="zh">中文</el-radio-button>
                 <el-radio-button label="en">En</el-radio-button>
@@ -102,23 +126,39 @@
           </div>
 
           <div class="user">
-            <el-avatar v-if="$store.state.userName==undefined?false:true" style="width:40px;height:40px"  icon="el-icon-user-solid" src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"></el-avatar>
-            <p class="username" v-if="$store.state.userName==undefined?false:true">{{$store.state.userName}}</p>
-            <div v-if="$store.state.userName==undefined?true:false" @click="$router.push('/login')">{{$t('login')}}</div>
+            <el-avatar
+              v-if="$store.state.userName == undefined ? false : true"
+              style="width: 40px; height: 40px"
+              icon="el-icon-user-solid"
+              src="https://cube.elemecdn.com/0/88/03b0d39583f48206768a7534e55bcpng.png"
+            ></el-avatar>
+            <p
+              class="username"
+              v-if="$store.state.userName == undefined ? false : true"
+            >
+              {{ $store.state.userName }}
+            </p>
+            <div
+              v-if="$store.state.userName == undefined ? true : false"
+              @click="$router.push('/login')"
+            >
+              {{ $t("login") }}
+            </div>
           </div>
 
           <el-button
             type="primary"
             @click="toWrite"
-            v-if="$router.history.current.path!='/write'"
+            v-if="$router.history.current.path != '/write'"
             round
             class="iconfont iconpiyue-yumaobi writeBtn"
-          >{{$t("write")}}</el-button>
+            >{{ $t("write") }}</el-button
+          >
         </div>
       </el-header>
       <el-divider></el-divider>
     </el-container>
-    
+
     <router-view />
   </div>
 </template>
@@ -126,11 +166,11 @@
 <script>
 export default {
   name: "headTit",
-  inject:["reload"],
+  inject: ["reload"],
   data() {
     return {
       lang: this.$store.state.lang,
-      currentTitle:0,
+      currentTitle: 0,
       logoImg:
         this.$store.state.lang == "zh"
           ? require("../assets/image/logo_zh.png")
@@ -148,22 +188,45 @@ export default {
     toWrite() {
       this.$router.push("/write");
     },
-    findClick(){
-      this.currentTitle = 0
+    findClick() {
+      if (this.$router.history.current.path == "/index") {
+        this.reload();
+      } else {
+        this.$router.push("/index");
+      }
+      this.currentTitle = 0;
     },
-    focusClick(){
-      this.currentTitle = 1
+    focusClick() {
+      this.currentTitle = 1;
     },
-    msgClick(){
-      this.currentTitle = 2
+    msgClick() {
+      console.log(this.$router);
+      if (this.$router.history.current.path == "/music") {
+        this.reload();
+        this.$nextTick(() => {
+          this.currentTitle = 2;
+          console.log(this.currentTitle);
+        });
+      } else {
+        this.$router.push("/music");
+        this.$nextTick(() => {
+          this.currentTitle = 2;
+          console.log(this.currentTitle);
+        });
+      }
+      //先刷新再改变下标，刷新时会重置下标为0
+      setTimeout(()=>{
+        this.currentTitle = 2;
+        console.log("time out")
+      },2000)
     },
-    logoClick(){
+    logoClick() {
       // this.reload()
-      console.log(this.$router)
-      if(this.$router.history.current.path == "/index"){
-        this.reload()
-      }else{
-        this.$router.push("/index")
+      console.log(this.$router);
+      if (this.$router.history.current.path == "/index") {
+        this.reload();
+      } else {
+        this.$router.push("/index");
       }
     },
     //下拉菜单匹配
@@ -220,32 +283,32 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="scss" scoped>
+.popul {
+  /deep/ .el-input__inner {
+    /*或者 .s2>>>.el-input__inner  */
+    border-radius: 100px; /*输入框圆角值*/
+    width: 100%;
+    height: 30px;
+    transition: width 1s;
+  }
 
-.popul{
-  /deep/ .el-input__inner{   /*或者 .s2>>>.el-input__inner  */
-        border-radius: 100px;    /*输入框圆角值*/
-        width: 100%;
-        height: 30px;
-        transition:width 1s;
-      }
-
-      .searchIcon{
-        display: block;
-        width: 20px;
-        height: 20px;
-        line-height: 30px;
-        margin-right: 5px;
-      }
-      .titleTxt{
-        display: block;
-        text-align: center;
-      }
-      li{
-        padding: 5px 0 5px 0;
-      }
+  .searchIcon {
+    display: block;
+    width: 20px;
+    height: 20px;
+    line-height: 30px;
+    margin-right: 5px;
+  }
+  .titleTxt {
+    display: block;
+    text-align: center;
+  }
+  li {
+    padding: 5px 0 5px 0;
+  }
 }
-  
-.el-container{
+
+.el-container {
   position: fixed;
   left: 0;
   top: 0;
@@ -254,19 +317,18 @@ export default {
   background: #fff;
   z-index: 999;
 }
-.headTit{
+.headTit {
   margin-top: 100px;
 }
-
 
 .el-divider {
   margin: 0;
 }
-.titSelect{
+.titSelect {
   color: #ea6f5a;
   cursor: pointer;
 }
-.hoverEvent:hover{
+.hoverEvent:hover {
   background: #eee;
   cursor: pointer;
 }
@@ -291,98 +353,99 @@ export default {
       line-height: 60px;
     }
   }
-  .midArea{
+  .midArea {
     width: 60%;
     height: 100%;
     margin-left: 5%;
     position: relative;
-    .popTitle{
+    .popTitle {
       position: absolute;
       top: 0;
       display: none;
       left: 0;
-      li{
+      li {
         font-size: 16px;
         padding: 0 20px 0 20px;
       }
     }
-    .mid_ul{
+    .mid_ul {
       width: 100%;
       height: 100%;
       display: flex;
       list-style: none;
       justify-content: flex-start;
-      li{
+      li {
         font-size: 16px;
-        .titleIcon{
+        .titleIcon {
           font-size: 16px;
         }
         padding: 0 10px 0 10px;
-        /deep/ .el-input__inner{   /*或者 .s2>>>.el-input__inner  */
-          border-radius: 100px;    /*输入框圆角值*/
+        /deep/ .el-input__inner {
+          /*或者 .s2>>>.el-input__inner  */
+          border-radius: 100px; /*输入框圆角值*/
           width: 150px;
           height: 30px;
-          transition:width 1s;
+          transition: width 1s;
         }
-        /deep/ .el-input__inner:focus{
+        /deep/ .el-input__inner:focus {
           width: 170px;
         }
-          .searchIcon{
+        .searchIcon {
           margin-right: 5px;
         }
       }
     }
 
-    @media (max-width: 1069px){
-          .titleIcon{
-            display: none
-          }
+    @media (max-width: 1069px) {
+      .titleIcon {
+        display: none;
+      }
 
-          .titleTxt{
-            display: block
-          }
-        }
+      .titleTxt {
+        display: block;
+      }
+    }
 
-        @media screen and (min-width: 1069px) and (max-width: 1090px){
-          .titleIcon{
-            display: none
-          }
-        }
+    @media screen and (min-width: 1069px) and (max-width: 1090px) {
+      .titleIcon {
+        display: none;
+      }
+    }
 
-        @media (max-width: 950px){
-          .titleTxt{
-            display: none
-          }
-          .titleIcon{
-            display: block
-          }
-        }
+    @media (max-width: 950px) {
+      .titleTxt {
+        display: none;
+      }
+      .titleIcon {
+        display: block;
+      }
+    }
 
-        @media (max-width: 800px){
-          li{
-            display: none
-          }
-          .popTitle{
-            display: block;
-          }
-        }
+    @media (max-width: 800px) {
+      li {
+        display: none;
+      }
+      .popTitle {
+        display: block;
+      }
+    }
   }
   .rightArea {
     width: 20%;
     height: 100%;
     display: flex;
     align-items: center;
-    .user{
+    .user {
       display: flex;
       justify-content: space-between;
       align-items: center;
       padding: 0 10px 0 10px;
-      .username{
+      .username {
         margin-left: 10px;
       }
       cursor: pointer;
     }
-    .user:hover{
+    .user:hover {
       background: #eee;
     }
     .settingIcon {

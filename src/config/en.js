@@ -13,6 +13,7 @@ module.exports = {
     found:" Found",
     focus:" Focus",
     message:" Message",
+    music:"Music",
     search:"Search",
     tit:"Article title",
     label:"Article label",

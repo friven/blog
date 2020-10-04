@@ -13,6 +13,7 @@ module.exports = {
       found:" 发现",
       focus:" 关注",
       message:" 消息",
+      music:"音乐",
       search:"搜索",
       tit:"文章标题",
       label:"文章标签",
