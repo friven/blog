@@ -5,7 +5,7 @@
         <div class="leftArea">
           <!-- <p class="logo">{{$t("logo")}}</p> -->
           <el-image
-            style="width: 100px; height: 60px; cursor: pointer"
+            style="width: 100px; height: 69px; cursor: pointer"
             @click="logoClick"
             :src="logoImg"
             fit="contain"
@@ -156,7 +156,7 @@
           >
         </div>
       </el-header>
-      <el-divider></el-divider>
+      <el-divider class="divider"></el-divider>
     </el-container>
 
     <router-view />
@@ -170,7 +170,7 @@ export default {
   data() {
     return {
       lang: this.$store.state.lang,
-      currentTitle: 0,
+      
       logoImg:
         this.$store.state.lang == "zh"
           ? require("../assets/image/logo_zh.png")
@@ -189,31 +189,30 @@ export default {
       this.$router.push("/write");
     },
     findClick() {
-      if (this.$router.history.current.path == "/index") {
+      if (this.$route.name == "index") {
         this.reload();
       } else {
         this.$router.push("/index");
       }
-      this.currentTitle = 0;
     },
     focusClick() {
-      this.currentTitle = 1;
+      if (this.$route.name == "focus") {
+        this.reload();
+      } else {
+        this.$router.push("/focus");
+      }
     },
     msgClick() {
-      if (this.$router.history.current.path == "/music") {
+      if (this.$route.name == "music") {
         this.reload();
       } else {
         this.$router.push("/music");
       }
-      //先刷新再改变下标，刷新时会重置下标为0
-      this.$nextTick(() => {
-            this.currentTitle = 2;
-      });
     },
     logoClick() {
       // this.reload()
       console.log(this.$router);
-      if (this.$router.history.current.path == "/index") {
+      if (this.$route.name == "index") {
         this.reload();
       } else {
         this.$router.push("/index");
@@ -256,6 +255,19 @@ export default {
     this.restaurants = this.loadAll();
   },
 
+  computed: {
+    currentTitle(){
+          if(this.$route.name=="index"){
+            return 0;
+          }else if(this.$route.name=="focus"){
+            return 1;
+          }else if(this.$route.name=="music"){
+            return 2;
+          }else{
+            return -1;
+          }
+    }
+  },
   watch: {
     lang(newval) {
       console.log(newval);
@@ -308,7 +320,7 @@ export default {
   z-index: 999;
 }
 .headTit {
-  margin-top: 100px;
+  margin-top: 70px;
 }
 
 .el-divider {
@@ -323,25 +335,19 @@ export default {
   cursor: pointer;
 }
 .el-header {
+  height: 69px!important;
   width: 100%;
   min-width: 400px;
   // background-color: $color;
   color: #333;
   text-align: center;
-  line-height: 60px;
+  line-height: 69px;
   display: flex;
   // justify-content: space-between;
   .leftArea {
     width: 10%;
     height: 100%;
     min-width: 100px;
-    .logo {
-      margin: 0;
-      font-size: 30px;
-      color: #ea6f5a;
-      cursor: pointer;
-      line-height: 60px;
-    }
   }
   .midArea {
     width: 60%;

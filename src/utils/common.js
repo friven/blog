@@ -36,3 +36,27 @@ export const getFirstImage = (str)=>{
 /**
  * 性能问题，窗口缩放
 */
+
+
+/**
+ * 时间戳转时间
+ * @param {Time}  timestamp - 时间戳
+ * @param {String}  type - 时间格式
+ * @returns {String} 时间
+*/
+export const timeStampToTime = (timestamp , type = "YYYY-MM-DD hh:mm:ss")=>{
+    var date = new Date(parseInt(timestamp));
+    var Y = date.getFullYear()+"-";
+    var M = (date.getMonth()+1<10?"0"+(date.getMonth()+1):date.getMonth()+1)+"-";
+    var D = (date.getDate()<10?"0"+date.getDate():date.getDate())+" ";
+    var h = (date.getHours()<10?"0"+date.getHours():date.getHours())+":";
+    var m = (date.getMinutes()<10?"0"+date.getMinutes():date.getMinutes())+":";
+    var s = (date.getSeconds()<10?"0"+date.getSeconds():date.getSeconds());
+    if(type == "YYYY-MM-DD hh:mm:ss"){
+        return Y+M+D+h+m+s;
+    }else if(type == "YYYY-MM-DD"){
+        return Y+M+D;
+    }else{
+        return h+m+s;
+    }
+}

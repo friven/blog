@@ -19,6 +19,7 @@ module.exports = {
     label:"Article label",
     type:"Article type",
     release:"Release form",
+    codeStyle:"Code Style",
 
     introduction:"The article brief introduction",
     content:"article content",

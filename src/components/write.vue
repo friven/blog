@@ -63,6 +63,13 @@
               $t("private")
             }}</el-radio>
           </el-form-item>
+
+          <el-form-item :label="$t('codeStyle')">
+            <el-select v-model="artical.codeStyle" filterable>
+              <el-option v-for="(item,index) in codeStyleList" :key="index" :label="item" :value="index"></el-option>
+       
+            </el-select>
+          </el-form-item>
         </div>
 
         <el-form-item class="mdform" v-if="active == 1">
@@ -72,6 +79,7 @@
             @change="editChange"
             @imgAdd="$imgAdd"
             @imgDel="$imgDel"
+            :codeStyle="codeStyleList[artical.codeStyle]"
             v-model="artical.content"
           >
           </mavon-editor>
@@ -129,12 +137,93 @@ export default {
       musicSearchVal: "",
       musicList: [],
       inputValue: "",
+      codeStyleList:[
+        'agate',
+        'androidstudio',
+        'arduino-light',
+        'arta',
+        'ascetic',
+        'atelier-cave-dark',
+        'atelier-cave-light',
+        'atelier-dune-dark',
+        'atelier-dune-light',
+        'atelier-estuary-dark',
+        'atelier-estuary-light',
+        'atelier-forest-dark',
+        'atelier-forest-light',
+        'atelier-heath-dark',
+        'atelier-heath-light',
+        'atelier-lakeside-dark',
+        'atelier-lakeside-light',
+        'atelier-plateau-dark',
+        'atelier-plateau-light',
+        'atelier-savanna-dark',
+        'atelier-savanna-light',
+        'atelier-seaside-dark',
+        'atelier-seaside-light',
+        'atelier-sulphurpool-dark',
+        'atelier-sulphurpool-light',
+        'atom-one-dark',
+        'atom-one-light',
+        'brown-paper',
+        'codepen-embed',
+        'color-brewer',
+        'darcula',
+        'dark',
+        'darkula',
+        'default',
+        'docco',
+        'dracula',
+        'far',
+        'foundation',
+        'github-gist',
+        'github',
+        'googlecode',
+        'grayscale',
+        'gruvbox-dark',
+        'gruvbox-light',
+        'hopscotch',
+        'hybrid',
+        'idea',
+        'ir-black',
+        'kimbie.dark',
+        'kimbie.light',
+        'magula',
+        'mono-blue',
+        'monokai-sublime',
+        'monokai',
+        'obsidian',
+        'ocean',
+        'paraiso-dark',
+        'paraiso-light',
+        'pojoaque',
+        'purebasic',
+        'qtcreator_dark',
+        'qtcreator_light',
+        'railscasts',
+        'rainbow',
+        'routeros',
+        'school-book',
+        'solarized-dark',
+        'solarized-light',
+        'sunburst',
+        'tomorrow-night-blue',
+        'tomorrow-night-bright',
+        'tomorrow-night-eighties',
+        'tomorrow-night',
+        'tomorrow',
+        'vs',
+        'vs2015',
+        'xcode',
+        'xt256',
+        'zenburn'
+      ],
       artical: {
         title: "", //标题
         content: "", //内容
         label: "", //标签
         type: 0, //类型
-        release: 1, //发布形式
+        release:1, //发布形式
         htmlContent: "",
         mdContent: "",
         textContent: "",
@@ -142,6 +231,7 @@ export default {
         induction: "",
         userid: this.$store.state.userId,
         bgm: "",
+        codeStyle:70
       },
     };
   },
@@ -279,6 +369,7 @@ export default {
   display: flex;
   height: calc(100vh - 100px);
   width: 100%;
+  margin-top: 100px;
   .form {
     width: 66%;
     height: 100%;

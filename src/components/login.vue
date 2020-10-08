@@ -287,7 +287,7 @@ export default {
 .login {
   width:100%;
   height: 100%;
-
+  margin-top: 100px;
   .box-card {
     width: 300px;
     height: 470px;

@@ -19,6 +19,7 @@ module.exports = {
       label:"文章标签",
       type:"文章类型",
       release:"发布形式",
+      codeStyle:"代码块样式",
 
       introduction:" 文章简介",
       content:" 正文",

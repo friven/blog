@@ -6,6 +6,27 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "1717264",
+      "name": "用户",
+      "font_class": "yonghu",
+      "unicode": "e70c",
+      "unicode_decimal": 59148
+    },
+    {
+      "icon_id": "7852904",
+      "name": "播放",
+      "font_class": "shipin",
+      "unicode": "e62e",
+      "unicode_decimal": 58926
+    },
+    {
+      "icon_id": "12221372",
+      "name": "五角星 星型 ",
+      "font_class": "changyongtubiao-xianxingdaochu-zhuanqu-",
+      "unicode": "e606",
+      "unicode_decimal": 58886
+    },
+    {
       "icon_id": "13479648",
       "name": "耳机",
       "font_class": "iconfonterji",

@@ -5,12 +5,12 @@
       <div class="code" v-for="(item, ind) in list" :key="item.id">
         <div class="listEvery">
           <div class="listdiv">
-            <a class="title1">{{ item.title }}</a>
+            <a class="title1" @click="toDetail(item.id)">{{ item.title }}</a>
             <div class="info">{{ item.induction }}</div>
             <div class="iconList">
               <span class="hot">
                 <i class="iconfont iconDegreeofheat hoticon"></i>
-                {{ item.clickRate }}</span
+                {{ item.hot }}</span
               >
               <span class="author">{{
                 item.userName == null ? "无名" : item.userName
@@ -21,7 +21,7 @@
               >
               <span class="zan">
                 <i class="iconfont iconxinaixin"></i>
-                {{ item.top }}</span
+                {{ item.clickCount }}</span
               >
             </div>
           </div>
@@ -89,6 +89,12 @@ export default {
         this.loading = false;
       });
     },
+    toDetail(id){
+      this.$router.push({
+        name: "detail",
+        params: { id: id }
+      })
+    }
   },
   computed: {
     // noMore() {

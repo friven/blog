@@ -7,8 +7,6 @@ instance.defaults.headers.post['Content-Type'] = 'application/x-www-form-urlenco
 
 instance.interceptors.request.use(    
   config => {       
-    console.log(config)
-    console.log(config.requestUrlType,process.env.VUE_APP_URL,process.env.VUE_APP_URL2)
     if(config.requestUrlType == "music"){
       config.baseURL = process.env.VUE_APP_URL2;
     }else{

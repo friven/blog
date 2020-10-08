@@ -8,6 +8,8 @@ import index from '../components/index'
 import headTit from '../components/headTit'
 import write from '../components/write'
 import music from '../components/music'
+import detail from '../components/detail'
+import focus from '../components/focus'
 // 1.通过Vue.use(插件), 安装插件
 Vue.use(VueRouter)
  
@@ -44,7 +46,17 @@ const routes = [
         path: '/music',
         component: music,
         name:"music",
-      }
+      },
+      {
+        path: '/detail/:id',
+        component: detail,
+        name:"detail",
+      },
+      {
+        path: '/focus',
+        component: focus,
+        name:"focus",
+      },
     ]
   },
   
