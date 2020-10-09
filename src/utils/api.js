@@ -40,6 +40,10 @@ const article = {
     getSinger(params){
         return instance.post("/artist/list",params,{withCredentials: true,requestUrlType:"music"})
     },
+    //获取歌单
+    getAllNewSong(params){
+        return instance.post("/top/song",params,{withCredentials: true,requestUrlType:"music"})
+    },
 
 
 

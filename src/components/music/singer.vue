@@ -29,7 +29,15 @@
         <el-divider></el-divider>
 
         <div class="singerContent">
-
+            <ul>
+                <li v-for="(item,ind) in singerList" :key="ind">
+                    <img :src="item.picUrl" alt="加载失败">
+                    <p class="singerName">
+                        <span>{{item.name}}</span>
+                        <i class="iconfont iconyonghu"></i>
+                    </p>
+                </li>
+            </ul>
         </div>
 
     </div>
@@ -37,7 +45,9 @@
 </template>
 
 <script>
+import { throttle } from "../../utils/common";
 export default {
+  props: ['tabName'],
   name: "",
   data() {
     return {
@@ -103,8 +113,8 @@ export default {
           letter:"-1"
       },
       singerList: [],
-      offset:1,
-      total:1,
+      bottom: false, //是否已经滚动到底部
+      more:false
     };
   },
   methods: {
@@ -113,7 +123,7 @@ export default {
               v.select = 0;
               if(v.value == val){
                   v.select =1
-                  this.typeVa.type = val
+                  this.typeVal.type = val
                   this.getSingerList();
               }
           })
@@ -123,7 +133,7 @@ export default {
               v.select = 0;
               if(v.value == val){
                   v.select =1
-                  this.typeVa.area = val
+                  this.typeVal.area = val
                   this.getSingerList();
               }
           })
@@ -133,7 +143,7 @@ export default {
               v.select = 0;
               if(v.value == val){
                   v.select =1
-                  this.typeVa.letter = val
+                  this.typeVal.letter = val
                   this.getSingerList();
               }
           })
@@ -142,11 +152,28 @@ export default {
           let params = {
               type:this.typeVal.type,
               area:this.typeVal.area,
-              initial:this.typeVal.letter
+              initial:this.typeVal.letter,
+              offset:0,
+              limit:40
           }
           this.$api.getSinger(params).then(res=>{
               console.log(res)
               this.singerList = res.data.artists
+              this.more = res.data.more
+          })
+      },
+      addData(){
+          let params = {
+              type:this.typeVal.type,
+              area:this.typeVal.area,
+              initial:this.typeVal.letter,
+              offset:this.singerList.length,
+              limit:20
+          }
+          this.$api.getSinger(params).then(res=>{
+              console.log(res)
+              this.singerList.push(...(res.data.artists))
+              this.more = res.data.more
           })
       }
   },
@@ -170,7 +197,35 @@ export default {
         )
         // 初始化请求
         this.getSingerList();
+        console.log(this.imgUrl)
+
+        window.addEventListener("scroll", () => {
+      // 1.scrollY：返回当前viewport顶部边缘的Y坐标，如果没有viewport，返回的值为0。
+      // 2.document.documentElement.clientHeight：以像素为单位的元素的内部高度，包括填充，但不包括水平滚动条高度，边框或边距。
+      // 3.document.documentElement.scrollHeight：元素内容的高度，包括由于溢出在屏幕上不可见的内容。
+      if(this.tabName!="fourth"){
+          return
+      }
+      this.bottom =
+        document.documentElement.scrollHeight -
+          (document.documentElement.clientHeight + window.scrollY) <=
+        10
+          ? true
+          : false;
+    });
   },
+  watch: {
+      bottom(bottom) {
+      console.log(this.list)
+      if (bottom) {
+        if (!this.more) {
+          return;
+        }
+        //节流方法，防止用户多次触发
+        throttle(this.addData, 1000, this)();
+      }
+    },
+  }
 };
 </script>
 <style lang='scss' scoped>
@@ -207,6 +262,31 @@ export default {
         color: #000;
         background-color: #eee;
     }
+  }
+  .singerContent{
+      ul{
+          display: flex;
+          flex-wrap: wrap;
+          li{
+              width: 22.5%;
+              margin:0 10px 10px 10px;
+              img{
+                  width: 100%;
+                  height: auto;
+                  cursor: pointer;
+              }
+              .singerName{
+                    display: flex;
+                    justify-content: space-between;
+                    margin-top: 5px;
+                    font-size: 13px;
+                    span{
+                        cursor: pointer;
+                    }
+                }
+          }
+      }
+      
   }
 }
 </style>

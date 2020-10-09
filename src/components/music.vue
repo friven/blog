@@ -10,9 +10,11 @@
       </el-tab-pane>
       <!-- <el-tab-pane label="排行榜" name="third">排行榜</el-tab-pane> -->
       <el-tab-pane label="歌手" name="fourth">
-        <singer></singer>
+        <singer :tabName="activeName"></singer>
       </el-tab-pane>
-      <el-tab-pane label="最新音乐" name="firth">最新音乐</el-tab-pane>
+      <el-tab-pane label="最新音乐" name="firth">
+        <newSong></newSong>
+      </el-tab-pane>
     </el-tabs>
   </div>
 </template>
@@ -21,12 +23,14 @@
 import recommended from "./music/recommended"
 import playList from "./music/playList"
 import singer from "./music/singer"
+import newSong from "./music/newSong"
 export default {
   name: "",
   components: {
       recommended,
       playList,
-      singer
+      singer,
+      newSong
   },
   data() {
     return {
