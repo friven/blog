@@ -267,15 +267,9 @@ export default {
     handleSelect(item) {
       console.log("search val", item);
       console.log(item.id);
+      this.$store.commit("setMusic", JSON.stringify(item));
+      this.$store.commit("setAudio", true);
       this.artical.bgm = item.id;
-      let params = {
-        id: item.id,
-      };
-      this.$api.getMusicUrl(params).then((res) => {
-        console.log(res);
-        this.$store.commit("setMusic", res.data.data[0].url);
-        this.$store.commit("setAudio", true);
-      });
     },
     // 绑定@imgAdd event
     $imgAdd(pos, $file) {

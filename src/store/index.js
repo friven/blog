@@ -8,7 +8,7 @@ export default new Vuex.Store({
     userName: localStorage.getItem("userName"),
     lang:localStorage.getItem("lang"),
     userId: localStorage.getItem("userId"),
-    musicUrl:localStorage.getItem("musicUrl"),
+    musicUrl:localStorage.getItem("musicUrl")?localStorage.getItem("musicUrl"):'{}',
     isPlay:false
   },
   mutations: {

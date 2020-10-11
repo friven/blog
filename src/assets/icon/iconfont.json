@@ -6,6 +6,13 @@
   "description": "",
   "glyphs": [
     {
+      "icon_id": "2741528",
+      "name": "音乐 (3)",
+      "font_class": "yinle3",
+      "unicode": "e607",
+      "unicode_decimal": 58887
+    },
+    {
       "icon_id": "1717264",
       "name": "用户",
       "font_class": "yonghu",
