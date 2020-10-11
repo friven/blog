@@ -134,23 +134,7 @@ export default {
       });
       this.$nextTick(() => {
         if (newVal) {
-          let playPromise = this.$refs.music.play();
-          console.log(playPromise);
-          if (playPromise) {
-            playPromise
-              .then(() => {
-                // 音频加载成功
-                // 音频的播放需要耗时
-                setInterval(() => {
-                  this.$refs.music.play();
-                }, 1000);
-              })
-              .catch((e) => {
-                // 音频加载失败
-                console.error(e);
-              });
-          }
-          // this.$refs.music.play();
+          this.$refs.music.play();
         } else {
           this.$refs.music.pause();
         }
